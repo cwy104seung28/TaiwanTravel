@@ -1,0 +1,56 @@
+body {
+  font-family: Microsoft JhengHei;
+}
+
+body .travel-container .travel-navbar {
+  height: 80px;
+  background-color: #222f3c;
+  padding: 0 165px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .travel-container .travel-navbar .travel-collapse {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+body .travel-container .travel-navbar .travel-link {
+  color: #eaecf4;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  padding: 8px 16px;
+}
+
+body .travel-container .travel-cover-container {
+  width: 100%;
+  height: calc(75vh - 80px);
+  background-image: url("../img/cover-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+body .travel-cover-container .travel-search-container {
+  margin-top: 157px;
+  margin-left: 260px;
+  display: inline-block;
+}
+
+body .travel-cover-container .travel-search-container .travel-cover-text {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 125%;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #ffffff;
+  text-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25);
+}
+/*# sourceMappingURL=style.css.map */
