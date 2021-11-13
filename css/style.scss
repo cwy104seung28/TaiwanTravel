@@ -9,37 +9,35 @@
 }
 body {
     font-family: Microsoft JhengHei;
-    .travel-container {
-        .travel-navbar {
-            height: 80px;
-            background-color: #222f3c;
-            padding: 0 165px;
-            display: flex;
-            justify-content: space-around;
-            .travel-collapse {
-                justify-content: end;
-            }
-            .travel-link {
-                color: #eaecf4;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 20px;
-                line-height: 140%;
-                letter-spacing: 0.15px;
-                padding: 8px 16px;
-            }
+    .travel-navbar {
+        height: 80px;
+        background-color: #222f3c;
+        padding: 0 165px;
+        display: flex;
+        justify-content: space-around;
+        .travel-collapse {
+            justify-content: end;
         }
-        .travel-cover-container {
-            @include size(100%, calc(75vh - 80px));
-            background-image: url("../img/cover-bg.png");
-            @include BG(no-repeat, center, contain);
+        .travel-link {
+            color: #eaecf4;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 140%;
+            letter-spacing: 0.15px;
+            padding: 8px 16px;
         }
     }
     .travel-cover-container {
+        @include size(100%, calc(75vh - 80px));
+        background-image: url("../img/cover-bg.png");
+        @include BG(no-repeat, top, cover);
+        animation: loading-move 1s 1;
+        animation-delay: 1s;
         .travel-search-container {
-            margin-top: 157px;
-            margin-left: 260px;
-            display:inline-block;//解決margin-top影響父層問題
+            margin-top: 170px;
+            margin-left: 280px;
+            display: inline-block; //解決margin-top影響父層問題
             .travel-cover-text {
                 font-weight: bold;
                 font-size: 40px;
@@ -50,5 +48,154 @@ body {
                 text-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25);
             }
         }
+    }
+    .travel-content-container {
+        height: 1000px;
+        position: relative;
+        animation: loading-move 3s 1;
+        animation-delay: 1s;
+        .travel-title {
+            display: inline-block;
+            width: 145px;
+            height: 34px;
+            text-align: center;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 140%;
+            letter-spacing: 0.15px;
+            color: #3a3b45;
+            margin-top: 60px;
+            margin-left: calc(50% - 72.5px);
+            margin-bottom: 48px;
+        }
+        .tab-title {
+            display: flex;
+            list-style: none;
+            width: 80%;
+            margin: auto;
+            justify-content: space-around;
+            padding: 0;
+
+            li {
+                width: 100%;
+                text-align: center;
+                a {
+                    text-decoration: none;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 20px;
+                    line-height: 140%;
+                    letter-spacing: 0.15px;
+                    color: #3a3b45;
+                    
+                }
+            }
+            .active {
+                position: relative;
+                &::after {
+                    content:" ";
+                    position: absolute;
+                    width: 100%;
+                    left:0;
+                    bottom:-10px;
+                    border-bottom:2px solid #6d89c5;
+                    animation: after-move 0.5s 1;
+                }
+            }
+        }
+        .travel {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            .card{
+                height: 308px;
+            }
+        }
+        .travel-decoration {
+            position: absolute;
+        }
+        #decoration1 {
+            left: 45%;
+            top: 45px;
+            z-index: -1;
+            animation: decoration-move-1 3s infinite;
+        }
+        #decoration2 {
+            left: 0;
+            top: 325px;
+            z-index: -1;
+            animation: decoration-move-2 5s infinite;
+        }
+        #decoration3 {
+            right: 0;
+            top: 758px;
+            z-index: -1;
+            animation: decoration-move-3 7.5s infinite;
+        }
+    }
+    .travel-footer {
+        height: 33px;
+        padding: 7.5px 0;
+        background: #abc6fa;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 140%;
+        text-align: center;
+        letter-spacing: 0.15px;
+        color: #222f3c;
+    }
+}
+@keyframes loading-move {
+    0% {
+        opacity: 0;
+        margin-top: 100px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+@keyframes decoration-move-1 {
+    0% {
+        top: 50px;
+    }
+    50% {
+        top: 40px;
+    }
+    100% {
+        top: 50px;
+    }
+}
+@keyframes decoration-move-2 {
+    0% {
+        top: 340px;
+    }
+    50% {
+        top: 310px;
+    }
+    100% {
+        top: 340px;
+    }
+}
+@keyframes decoration-move-3 {
+    0% {
+        top: 740px;
+    }
+    50% {
+        top: 700px;
+    }
+    100% {
+        top: 740px;
+    }
+}
+@keyframes after-move {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
     }
 }

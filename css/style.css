@@ -2,7 +2,7 @@ body {
   font-family: Microsoft JhengHei;
 }
 
-body .travel-container .travel-navbar {
+body .travel-navbar {
   height: 80px;
   background-color: #222f3c;
   padding: 0 165px;
@@ -13,13 +13,13 @@ body .travel-container .travel-navbar {
       justify-content: space-around;
 }
 
-body .travel-container .travel-navbar .travel-collapse {
+body .travel-navbar .travel-collapse {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
 }
 
-body .travel-container .travel-navbar .travel-link {
+body .travel-navbar .travel-link {
   color: #eaecf4;
   font-style: normal;
   font-weight: 600;
@@ -29,18 +29,22 @@ body .travel-container .travel-navbar .travel-link {
   padding: 8px 16px;
 }
 
-body .travel-container .travel-cover-container {
+body .travel-cover-container {
   width: 100%;
   height: calc(75vh - 80px);
   background-image: url("../img/cover-bg.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: top;
+  background-size: cover;
+  -webkit-animation: loading-move 1s 1;
+          animation: loading-move 1s 1;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
 body .travel-cover-container .travel-search-container {
-  margin-top: 157px;
-  margin-left: 260px;
+  margin-top: 170px;
+  margin-left: 280px;
   display: inline-block;
 }
 
@@ -52,5 +56,239 @@ body .travel-cover-container .travel-search-container .travel-cover-text {
   letter-spacing: 0.15px;
   color: #ffffff;
   text-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25);
+}
+
+body .travel-content-container {
+  height: 1000px;
+  position: relative;
+  -webkit-animation: loading-move 3s 1;
+          animation: loading-move 3s 1;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .travel-content-container .travel-title {
+  display: inline-block;
+  width: 145px;
+  height: 34px;
+  text-align: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  color: #3a3b45;
+  margin-top: 60px;
+  margin-left: calc(50% - 72.5px);
+  margin-bottom: 48px;
+}
+
+body .travel-content-container .tab-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  width: 80%;
+  margin: auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 0;
+}
+
+body .travel-content-container .tab-title li {
+  width: 100%;
+  text-align: center;
+}
+
+body .travel-content-container .tab-title li a {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 0.15px;
+  color: #3a3b45;
+}
+
+body .travel-content-container .tab-title .active {
+  position: relative;
+}
+
+body .travel-content-container .tab-title .active::after {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -10px;
+  border-bottom: 2px solid #6d89c5;
+  -webkit-animation: after-move 0.5s 1;
+          animation: after-move 0.5s 1;
+}
+
+body .travel-content-container .travel {
+  width: 80%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body .travel-content-container .travel .card {
+  height: 308px;
+}
+
+body .travel-content-container .travel-decoration {
+  position: absolute;
+}
+
+body .travel-content-container #decoration1 {
+  left: 45%;
+  top: 45px;
+  z-index: -1;
+  -webkit-animation: decoration-move-1 3s infinite;
+          animation: decoration-move-1 3s infinite;
+}
+
+body .travel-content-container #decoration2 {
+  left: 0;
+  top: 325px;
+  z-index: -1;
+  -webkit-animation: decoration-move-2 5s infinite;
+          animation: decoration-move-2 5s infinite;
+}
+
+body .travel-content-container #decoration3 {
+  right: 0;
+  top: 758px;
+  z-index: -1;
+  -webkit-animation: decoration-move-3 7.5s infinite;
+          animation: decoration-move-3 7.5s infinite;
+}
+
+body .travel-footer {
+  height: 33px;
+  padding: 7.5px 0;
+  background: #abc6fa;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 140%;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #222f3c;
+}
+
+@-webkit-keyframes loading-move {
+  0% {
+    opacity: 0;
+    margin-top: 100px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+
+@keyframes loading-move {
+  0% {
+    opacity: 0;
+    margin-top: 100px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+
+@-webkit-keyframes decoration-move-1 {
+  0% {
+    top: 50px;
+  }
+  50% {
+    top: 40px;
+  }
+  100% {
+    top: 50px;
+  }
+}
+
+@keyframes decoration-move-1 {
+  0% {
+    top: 50px;
+  }
+  50% {
+    top: 40px;
+  }
+  100% {
+    top: 50px;
+  }
+}
+
+@-webkit-keyframes decoration-move-2 {
+  0% {
+    top: 340px;
+  }
+  50% {
+    top: 310px;
+  }
+  100% {
+    top: 340px;
+  }
+}
+
+@keyframes decoration-move-2 {
+  0% {
+    top: 340px;
+  }
+  50% {
+    top: 310px;
+  }
+  100% {
+    top: 340px;
+  }
+}
+
+@-webkit-keyframes decoration-move-3 {
+  0% {
+    top: 740px;
+  }
+  50% {
+    top: 700px;
+  }
+  100% {
+    top: 740px;
+  }
+}
+
+@keyframes decoration-move-3 {
+  0% {
+    top: 740px;
+  }
+  50% {
+    top: 700px;
+  }
+  100% {
+    top: 740px;
+  }
+}
+
+@-webkit-keyframes after-move {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes after-move {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */
