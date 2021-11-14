@@ -48,10 +48,132 @@ $(function(){
                 </div>
             </div>
             `
-            for(i = 1;i < response.length; i++){}
-            if (response.data[i].Class1 == undefined){
-                response.data[i].Class1 ="";
-            }
+            // for(i = 1;i < response.length; i++){}
+            // if (response.data[i].Class1 == undefined){
+            //     response.data[i].Class1 ="";
+            // }
+        });
+        document.querySelector(`#${travel}`).innerHTML = content ;
+     })
+     .catch( (error) => console.log(error))
+     
+ }
+
+ function travelRender(description,res){
+    // let addressCard = document.querySelector("#travel-address");
+    let content = '';
+        response.data.forEach(function(data,ID){
+            content +=
+            `<div class="col">
+                <div class="card">
+                    <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[0].Picture.PictureDescription1}">
+                    <div class="card-body">
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
+                        <span class="card-address">${response.data[ID].Address}</span>
+                        <span class="card-sort">${response.data[ID].Class1}${response.data[0].Class2}${response.data[0].Class3}</span>
+                    </div>
+                </div>
+            </div>
+            `
+            // for(i = 1;i < response.length; i++){}
+            // if (response.data[i].Class1 == undefined){
+            //     response.data[i].Class1 ="";
+            // }
+        });
+        // document.querySelector(`#${travel}`).innerHTML = content ;
+     
+ }
+ travelResponse("travel-address");
+
+ function travelResponse(travel){
+    // let addressCard = document.querySelector("#travel-address");
+    let content = '';
+    axios.get(
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=ID%2CName%2CAddress%2CPicture%2CClass1%2CClass2%2CClass3&$filter=Picture%2FPictureUrl1%20ne%20null&$top=8&$format=JSON',
+
+        {
+           headers: getAuthorizationHeader()
+        }
+     ).then( (response) => {
+        console.log(response.data)
+        response.data.forEach(function(data,ID){
+            content +=
+            `<div class="col">
+                <div class="card">
+                    <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[0].Picture.PictureDescription1}">
+                    <div class="card-body">
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
+                        <span class="card-address">${response.data[ID].Address}</span>
+                        <span class="card-sort">${response.data[ID].Class1}${response.data[0].Class2}${response.data[0].Class3}</span>
+                    </div>
+                </div>
+            </div>
+            `
+            // for(i = 1;i < response.length; i++){}
+            // if (response.data[i].Class1 == undefined){
+            //     response.data[i].Class1 ="";
+            // }
+        });
+        document.querySelector(`#${travel}`).innerHTML = content ;
+     })
+     .catch( (error) => console.log(error))
+     
+ }
+
+ function travelRender(){
+    // let addressCard = document.querySelector("#travel-address");
+    let content = '';
+        response.data.forEach(function(data,ID){
+            content +=
+            `<div class="col">
+                <div class="card">
+                    <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[0].Picture.PictureDescription1}">
+                    <div class="card-body">
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
+                        <span class="card-address">${response.data[ID].Address}</span>
+                        <span class="card-sort">${response.data[ID].Class1}${response.data[0].Class2}${response.data[0].Class3}</span>
+                    </div>
+                </div>
+            </div>
+            `
+            // for(i = 1;i < response.length; i++){}
+            // if (response.data[i].Class1 == undefined){
+            //     response.data[i].Class1 ="";
+            // }
+        });
+        // document.querySelector(`#${travel}`).innerHTML = content ;
+     
+ }
+ travelResponse("travel-address");
+
+ function travelResponse(travel){
+    // let addressCard = document.querySelector("#travel-address");
+    let content = '';
+    axios.get(
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=ID%2CName%2CAddress%2CPicture%2CClass1%2CClass2%2CClass3&$filter=Picture%2FPictureUrl1%20ne%20null&$top=8&$format=JSON',
+
+        {
+           headers: getAuthorizationHeader()
+        }
+     ).then( (response) => {
+        console.log(response.data)
+        response.data.forEach(function(data,ID){
+            content +=
+            `<div class="col">
+                <div class="card">
+                    <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[0].Picture.PictureDescription1}">
+                    <div class="card-body">
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
+                        <span class="card-address">${response.data[ID].Address}</span>
+                        <span class="card-sort">${response.data[ID].Class1}${response.data[0].Class2}${response.data[0].Class3}</span>
+                    </div>
+                </div>
+            </div>
+            `
+            // for(i = 1;i < response.length; i++){}
+            // if (response.data[i].Class1 == undefined){
+            //     response.data[i].Class1 ="";
+            // }
         });
         document.querySelector(`#${travel}`).innerHTML = content ;
      })
