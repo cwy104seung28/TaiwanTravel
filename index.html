@@ -123,12 +123,12 @@
                 </svg>
 
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            <button class="navbar-toggler travel-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse travel-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+                <div class="navbar-nav travel-nav">
                     <a class="nav-link travel-link" href="#"><i class="fas fa-mountain fa-fw"></i>&nbsp;找景點</a>
                     <a class="nav-link travel-link" href="#"><i class="fas fa-utensils fa-fw"></i>&nbsp;找美食</a>
                     <a class="nav-link travel-link" href="#"><i class="fas fa-bed fa-fw"></i>&nbsp;找旅宿</a>
@@ -140,7 +140,7 @@
     </nav>
     <div class="travel-cover-container">
         <div class="travel-search-container">
-            <span class="travel-cover-text">一起來場說走就走的台灣之旅吧！</span>
+            <span class="travel-cover-text">一起來場說走就走<br class="text-change">的台灣之旅吧！</span>
             <div class="travel-search">
                 <form action="">
                     <select class="search-city" id="cityID">
@@ -175,7 +175,7 @@
                         <option value="room">找旅宿</option>
                         <option value="activity">找活動</option>
 
-                    </select>
+                    </select><br class="sort-change">
                     <input type="text" name="search" class="search" id="search" placeholder="找關鍵字">
                     <button class="submit" type="submit"><i class="fas fa-search fa-fw"></i>搜尋</button>
                 </form>
