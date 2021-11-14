@@ -161,12 +161,9 @@ body {
                 @include size(auto, 200px);
             }
         }
-        // #travel-activity{
-        //     justify-content: space-around;
-        //     .card{
-        //         width: 45%;
-        //     }
-        // }
+        #travel-activity{
+            max-height: 875px;
+        }
         .travel-decoration {
             position: absolute;
         }
@@ -252,4 +249,7 @@ body {
     100% {
         width: 100%;
     }
+}
+.original-height{
+    max-height: 100% !important;
 }

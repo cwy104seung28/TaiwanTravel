@@ -199,6 +199,10 @@ body .travel-content-container .travel .card-img-top {
   height: 200px;
 }
 
+body .travel-content-container #travel-activity {
+  max-height: 875px;
+}
+
 body .travel-content-container .travel-decoration {
   position: absolute;
 }
@@ -350,5 +354,9 @@ body .travel-footer {
   100% {
     width: 100%;
   }
+}
+
+.original-height {
+  max-height: 100% !important;
 }
 /*# sourceMappingURL=style.css.map */

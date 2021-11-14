@@ -28,7 +28,7 @@ function addressResponse(address) {
     // let addressCard = document.querySelector("#address-address");
     let content = '';
     axios.get(
-        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$filter=Class1%20ne%20null%20and%20Class2%20ne%20null%20and%20Class3%20ne%20null&$top=16&$format=JSON',
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$filter=Picture%2FPictureUrl1%20ne%20null%20and%20City%20ne%20null%20and%20Class1%20ne%20null%20and%20Class2%20ne%20null%20and%20Class3%20ne%20null&$top=30&$format=JSON',
 
         {
             headers: getAuthorizationHeader()
@@ -42,10 +42,10 @@ function addressResponse(address) {
                     <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
                         <h5 class="card-title">${response.data[ID].Name}</h5>
-                        <div class="card-address">${response.data[ID].Address}</div>
-                        <span class="card-sort-1">${response.data[ID].Class1}</span>
-                        <span class="card-sort-2">${response.data[ID].Class2}</span>
-                        <span class="card-sort-3">${response.data[ID].Class3}</span>
+                        <div class="card-address">${response.data[ID].City}</div>
+                        <span class="card-sort">${response.data[ID].Class1}</span>
+                        <span class="card-sort">${response.data[ID].Class2}</span>
+                        <span class="card-sort">${response.data[ID].Class3}</span>
                     </div>
                 </div>
             </div>
@@ -71,10 +71,10 @@ function addressRender(description, res) {
                     <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
                         <h5 class="card-title">${response.data[ID].Name}</h5>
-                        <div class="card-address">${response.data[ID].Address}</div>
-                        <span class="card-sort-1">${response.data[ID].Class1}</span>
-                        <span class="card-sort-2">${response.data[ID].Class2}</span>
-                        <span class="card-sort-3">${response.data[ID].Class3}</span>
+                        <div class="card-address">${response.data[ID].City}</div>
+                        <span class="card-sort">${response.data[ID].Class1}</span>
+                        <span class="card-sort">${response.data[ID].Class2}</span>
+                        <span class="card-sort">${response.data[ID].Class3}</span>
                 </div>
             </div>
             `
@@ -111,7 +111,6 @@ function foodResponse(food) {
                 </div>
             </div>
             `
-
         });
         document.querySelector(`#${food}`).innerHTML = content + `<button id="food-more" onClick="moreBtn()" class="travel-more">更多美食</button>`;
     })
@@ -247,9 +246,10 @@ function activityRender(description, res) {
 activityResponse("travel-activity");
 // this.options[this.selectedIndex].value;
 function moreBtn(){
-    $(this).parents().css("max-height","100%");
+    let parent = $(this).parent();
+    $(this).parent().addClass("original-height");
     // let travelPage = thisBtn.id.parent();
-    console.log($(this).parents());
+    console.log($(this).parent());
     // let curBtn = this.getElementById;
     // travelPage.style['max-height'] = "100%";
     // thisBtn.style['display'] = 'none;'
