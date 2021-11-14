@@ -148,7 +148,7 @@
                     </select>
                     <select class="action" onchange="change(value)" id="sortID">
                     </select>
-                    <input type="text" name="search" id="search" placeholder="找關鍵字">
+                    <input type="text" name="search" class="search" id="search" placeholder="找關鍵字">
                     <button type="submit"></button>
                 </form>
             </div>
@@ -264,11 +264,14 @@
         </div>
         <div id="decoration3" class="travel-decoration">
             <svg width="224" height="292" viewBox="0 0 224 292" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M359.813 124.439C358.089 159.057 332.315 186.657 309.036 212.527C288.701 235.125 262.985 249.793 235.371 262.73C204.966 276.975 174.691 294.343 141.23 291.147C104.062 287.595 67.8404 271.69 42.7052 244.323C16.5531 215.848 -6.35781 176.897 1.67302 139.197C9.52297 102.346 52.312 86.5751 81.4561 62.4091C101.414 45.8601 120.97 30.8679 144.798 20.5185C170.146 9.50926 195.661 -0.399361 223.299 0.803016C257.039 2.27087 293.293 5.48559 318.222 28.0632C344.892 52.2172 361.595 88.6527 359.813 124.439Z" fill="#D8C6F1"/>
-                </svg>                
+                <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                    d="M359.813 124.439C358.089 159.057 332.315 186.657 309.036 212.527C288.701 235.125 262.985 249.793 235.371 262.73C204.966 276.975 174.691 294.343 141.23 291.147C104.062 287.595 67.8404 271.69 42.7052 244.323C16.5531 215.848 -6.35781 176.897 1.67302 139.197C9.52297 102.346 52.312 86.5751 81.4561 62.4091C101.414 45.8601 120.97 30.8679 144.798 20.5185C170.146 9.50926 195.661 -0.399361 223.299 0.803016C257.039 2.27087 293.293 5.48559 318.222 28.0632C344.892 52.2172 361.595 88.6527 359.813 124.439Z"
+                    fill="#D8C6F1" />
+            </svg>
         </div>
+        <button class="travel-more">more</button>
     </div>
-    <footer class="travel-footer">Copyright © 2021  Taiwan Travel. All rights reserved.</footer>
+    <footer class="travel-footer">Copyright © 2021 Taiwan Travel. All rights reserved.</footer>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
 </script>
@@ -276,6 +279,11 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7660ebabea.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- jsSHA套件 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"
+    integrity="sha512-mvfoZwdzM8yPhlNxN1lU8S5wcfC5aPRCD3W0jsOeA+D75MMCrycxQqIvt6K7c5P7jItn7AXiAreuR+eockUHwQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./js/index.js"></script>
 
 </html>

@@ -6,20 +6,8 @@ $(function(){
             $($(this).find('a'). attr ('href')).show().siblings ('.travel').hide();
             $(this).addClass('active'). siblings ('.active').removeClass('active');
         });
-    });
-    
-axios.get(
-    'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=ID%2CName%2CAddress%2CClass1%2CClass2%2CClass3%2CCity&$top=550&$skip=450&$format=JSON',
-    {
-       headers: getAuthorizationHeader()
-    }
- )
- .then(function (response) {
-   document.querySelector('body').textContent=JSON.stringify(response.data);
- })
- .catch(function (error) {
-   console.log(error);
- }); 
+}); 
+
  
  function getAuthorizationHeader() {
  //  填入自己 ID、KEY 開始
@@ -34,3 +22,42 @@ axios.get(
      let Authorization = 'hmac username=\"' + AppID + '\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"' + HMAC + '\"';
      return { 'Authorization': Authorization, 'X-Date': GMTString }; 
  }
+
+
+ function travelResponse(travel){
+    // let addressCard = document.querySelector("#travel-address");
+    let content = '';
+    axios.get(
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=ID%2CName%2CAddress%2CPicture%2CClass1%2CClass2%2CClass3&$filter=Picture%2FPictureUrl1%20ne%20null&$top=20&$format=JSON',
+
+        {
+           headers: getAuthorizationHeader()
+        }
+     ).then( (response) => {
+        console.log(response.data)
+        response.data.forEach(function(data,ID){
+            content +=
+            `<div class="col">
+                <div class="card">
+                    <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[0].Picture.PictureDescription1}">
+                    <div class="card-body">
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
+                        <span class="card-address">${response.data[ID].Address}</span>
+                        <span class="card-sort">${response.data[ID].Class1}${response.data[0].Class2}${response.data[0].Class3}</span>
+                    </div>
+                </div>
+            </div>
+            `
+            for(i = 1;i < response.length; i++){}
+            if (response.data[i].Class1 == undefined){
+                response.data[i].Class1 ="";
+            }
+        });
+        document.querySelector(`#${travel}`).innerHTML = content ;
+     })
+     .catch( (error) => console.log(error))
+     
+ }
+
+ travelResponse("travel-address");
+

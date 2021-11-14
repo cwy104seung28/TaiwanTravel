@@ -50,7 +50,8 @@ body {
         }
     }
     .travel-content-container {
-        height: 1000px;
+        height: auto;
+        overflow: hidden;
         position: relative;
         animation: loading-move 3s 1;
         animation-delay: 1s;
@@ -106,12 +107,14 @@ body {
         }
         .travel {
             width: 80%;
+            max-height: 800px;
+            height: auto;
             margin: auto;
             display: flex;
             flex-wrap: wrap;
-            .card{
-                height: 308px;
-            }
+            // .card{
+
+            // }
         }
         .travel-decoration {
             position: absolute;
@@ -133,6 +136,12 @@ body {
             top: 758px;
             z-index: -1;
             animation: decoration-move-3 7.5s infinite;
+        }
+        .travel-more{
+            @include size(150px,50px);
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
         }
     }
     .travel-footer {
