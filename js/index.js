@@ -59,5 +59,29 @@ $(function(){
      
  }
 
+ function travelRender(description,res){
+    // let addressCard = document.querySelector("#travel-address");
+    let content = '';
+        response.data.forEach(function(data,ID){
+            content +=
+            `<div class="col">
+                <div class="card">
+                    <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[0].Picture.PictureDescription1}">
+                    <div class="card-body">
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
+                        <span class="card-address">${response.data[ID].Address}</span>
+                        <span class="card-sort">${response.data[ID].Class1}${response.data[0].Class2}${response.data[0].Class3}</span>
+                    </div>
+                </div>
+            </div>
+            `
+            // for(i = 1;i < response.length; i++){}
+            // if (response.data[i].Class1 == undefined){
+            //     response.data[i].Class1 ="";
+            // }
+        });
+        // document.querySelector(`#${travel}`).innerHTML = content ;
+     
+ }
  travelResponse("travel-address");
 
