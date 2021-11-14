@@ -28,7 +28,7 @@ $(function(){
     // let addressCard = document.querySelector("#travel-address");
     let content = '';
     axios.get(
-        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=ID%2CName%2CAddress%2CPicture%2CClass1%2CClass2%2CClass3&$filter=Picture%2FPictureUrl1%20ne%20null&$top=20&$format=JSON',
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$select=ID%2CName%2CAddress%2CPicture%2CClass1%2CClass2%2CClass3&$filter=Picture%2FPictureUrl1%20ne%20null&$top=8&$format=JSON',
 
         {
            headers: getAuthorizationHeader()
