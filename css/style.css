@@ -59,7 +59,6 @@ body .travel-cover-container .travel-search-container .travel-cover-text {
 }
 
 body .travel-content-container {
-  height: auto;
   overflow: hidden;
   position: relative;
   -webkit-animation: loading-move 3s 1;
@@ -163,14 +162,6 @@ body .travel-content-container #decoration3 {
   z-index: -1;
   -webkit-animation: decoration-move-3 7.5s infinite;
           animation: decoration-move-3 7.5s infinite;
-}
-
-body .travel-content-container .travel-more {
-  width: 150px;
-  height: 50px;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
 }
 
 body .travel-footer {
