@@ -125,7 +125,7 @@ body .travel-content-container .tab-title {
   display: -ms-flexbox;
   display: flex;
   list-style: none;
-  width: 80%;
+  width: 76.4%;
   margin: auto;
   margin-bottom: 20px;
   -ms-flex-pack: distribute;
@@ -164,9 +164,9 @@ body .travel-content-container .tab-title .active::after {
 }
 
 body .travel-content-container .travel {
-  width: 80%;
+  width: 76.4%;
   height: auto;
-  max-height: 820px;
+  max-height: 960px;
   margin: auto;
   margin-bottom: 100px;
   display: -webkit-box;
@@ -199,8 +199,51 @@ body .travel-content-container .travel .card-img-top {
   height: 200px;
 }
 
+body .travel-content-container .travel .card-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 140%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 0.15px;
+  color: #3a3b45;
+}
+
+body .travel-content-container .travel .card-address {
+  margin-bottom: 15px;
+}
+
+body .travel-content-container .travel .card-sort {
+  background: #d8c6f1;
+  border-radius: 40px;
+  padding: 3px 4px;
+  margin-bottom: 50px;
+  display: inline-block;
+}
+
+body .travel-content-container .travel .card-open {
+  margin-bottom: 50px;
+  display: inline-block;
+}
+
 body .travel-content-container #travel-activity {
-  max-height: 875px;
+  max-height: 990px;
+}
+
+body .travel-content-container #travel-activity .card {
+  margin: auto;
+  margin-top: 24px;
+  width: 45%;
+}
+
+body .travel-content-container #travel-activity .card .col-lg-4 img {
+  width: auto;
+  height: 200px;
 }
 
 body .travel-content-container .travel-decoration {
