@@ -24,15 +24,13 @@ body {
             padding: 0 calc(50% - 60px);
         }
         .travel-toggler{
-            span{
-                @include size (38px, 35px);
-                position: absolute;
-                border: 1px solid #F8F9FC;
-                box-sizing: border-box;
-                border-radius: 4px;
-                right: 10px;
-                top: 20px;
-            }
+            // @include size (38px, 35px);
+            position: absolute;
+            border: 1px solid #F8F9FC;
+            box-sizing: border-box;
+            border-radius: 4px;
+            right: 10px;
+            top: 10px;
             &:focus{
                 box-shadow: none;
             }

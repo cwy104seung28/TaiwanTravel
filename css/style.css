@@ -27,16 +27,14 @@ body .travel-navbar {
   }
 }
 
-body .travel-navbar .travel-toggler span {
-  width: 38px;
-  height: 35px;
+body .travel-navbar .travel-toggler {
   position: absolute;
   border: 1px solid #F8F9FC;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 4px;
   right: 10px;
-  top: 20px;
+  top: 10px;
 }
 
 body .travel-navbar .travel-toggler:focus {
