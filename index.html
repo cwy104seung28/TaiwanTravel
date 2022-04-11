@@ -123,8 +123,9 @@
                 </svg>
 
             </a>
-            <button class="navbar-toggler travel-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler travel-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse travel-collapse" id="navbarNavAltMarkup">
@@ -176,14 +177,14 @@
                         <option value="activity">找活動</option>
 
                     </select><br class="sort-change">
-                    <input type="text" name="search" class="search" id="search" placeholder="找關鍵字">
+                    <input type="text" name="search" class="search" id="search" placeholder="找關鍵字" v-model="search">
                     <button class="submit" type="submit"><i class="fas fa-search fa-fw"></i>搜尋</button>
                 </form>
             </div>
         </div>
 
     </div>
-    <div class="travel-content-container">
+    <div id="travel-content" class="travel-content-container">
         <span class="travel-title">尋找旅遊靈感</span>
         <ul class="tab-title">
             <li><a href="#travel-address"><i class="fas fa-mountain fa-fw"></i>&nbsp;找景點</a></li>
@@ -234,7 +235,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js"
     integrity="sha512-mvfoZwdzM8yPhlNxN1lU8S5wcfC5aPRCD3W0jsOeA+D75MMCrycxQqIvt6K7c5P7jItn7AXiAreuR+eockUHwQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script>
 <script src="./js/index.js"></script>
+<!-- <script>
+    var app = new Vue({
+        el: '#travel-content',
+        methods: {
+            moreBtn: function () {
+                $(this).parent('.travel').toggleClass('.original-height');
+                // $(this).parent(".travel").css('max-height','100%');
+            }
+        }
+    }).mount('#travel-content');
+</script> -->
 
 </html>
