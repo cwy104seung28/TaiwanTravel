@@ -113,12 +113,6 @@ body .travel-cover-container .travel-search-container {
   }
 }
 
-@media (max-width: 649px) {
-  body .travel-cover-container .travel-search-container {
-    margin-left: calc(50% - 220px);
-  }
-}
-
 body .travel-cover-container .travel-search-container .travel-cover-text {
   font-weight: bold;
   font-size: 40px;

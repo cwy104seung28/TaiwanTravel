@@ -28,7 +28,7 @@ function addressResponse(address) {
     // let addressCard = document.querySelector("#address-address");
     let content = '';
     axios.get(
-        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?%24select=ScenicSpotID%2CScenicSpotName%2CAddress%2COpenTime%2CPicture%2CClass1%2CClass2%2CClass3&$filter=Picture%2FPictureUrl1%20ne%20null%20and%20Class1%20ne%20null%20and%20Class2%20ne%20null%20and%20Class3%20ne%20null&%24top=20&$format=JSON',
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?$filter=Class1%20ne%20null%20and%20Class2%20ne%20null%20and%20Class3%20ne%20null&$top=16&$format=JSON',
 
         {
             headers: getAuthorizationHeader()
@@ -41,7 +41,7 @@ function addressResponse(address) {
                 <div class="card">
                     <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
-                        <h5 class="card-title">${response.data[ID].ScenicSpotName}</h5>
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
                         <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].Address}</div>
                         <span class="card-sort">${response.data[ID].Class1}</span>
                         <span class="card-sort">${response.data[ID].Class2}</span>
@@ -50,8 +50,12 @@ function addressResponse(address) {
                 </div>
             </div>
             `
+            // if (response.data[ID].Class1 == undefined){
+            //     let sort1 = document.getElementsByClassName(".card-sort-1");
+            //     sort1.style.display = "none";
+            // }
         });
-        document.querySelector(`#${address}`).innerHTML = content + `<button id="address-more" v-on:click="moreBtn" class="travel-more">更多景點</button>`;
+        document.querySelector(`#${address}`).innerHTML = content + `<button id="address-more" onClick="moreBtn()" class="travel-more">更多景點</button>`;
     })
         .catch((error) => console.log(error))
 
@@ -60,14 +64,13 @@ function addressResponse(address) {
 function addressRender(description, res) {
     // let addressCard = document.querySelector("#address-address");
     let content = '';
-    
     response.data.forEach(function (data, ID) {
         content +=
             `<div class="col">
                 <div class="card">
                     <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
-                        <h5 class="card-title">${response.data[ID].ScenicSpotName}</h5>
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
                         <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].Address}</div>
                         <span class="card-sort">${response.data[ID].Class1}</span>
                         <span class="card-sort">${response.data[ID].Class2}</span>
@@ -75,7 +78,10 @@ function addressRender(description, res) {
                 </div>
             </div>
             `
-            
+        // for(i = 1;i < response.length; i++){}
+        // if (response.data[i].Class1 == undefined){
+        //     response.data[i].Class1 ="";
+        // }
     });
     // document.querySelector(`#${address}`).innerHTML = content ;
 
@@ -85,19 +91,20 @@ addressResponse("travel-address");
 function foodResponse(food) {
     let content = '';
     axios.get(
-        'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?%24select=RestaurantID%2CRestaurantName%2CAddress%2COpenTime%2CPicture&%24top=30&%24format=JSON',
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$select=ID%2CName%2CAddress%2COpenTime%2CPicture&$top=16&$format=JSON',
 
         {
             headers: getAuthorizationHeader()
         }
     ).then((response) => {
+        console.log(response.data)
         response.data.forEach(function (data, ID) {
             content +=
                 `<div class="col">
                 <div class="card">
                     <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
-                        <h5 class="card-title">${response.data[ID].RestaurantName}</h5>
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
                         <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].Address}</div>
                         <div class="card-open"><i class="fas fa-clock fa-fw"></i>${response.data[ID].OpenTime}</div>
                     </div>
@@ -105,7 +112,7 @@ function foodResponse(food) {
             </div>
             `
         });
-        document.querySelector(`#${food}`).innerHTML = content + `<button id="food-more" v-on:click="moreBtn" class="travel-more">更多美食</button>`;
+        document.querySelector(`#${food}`).innerHTML = content + `<button id="food-more" onClick="moreBtn()" class="travel-more">更多美食</button>`;
     })
         .catch((error) => console.log(error))
 
@@ -119,7 +126,7 @@ function foodRender(description, res) {
                 <div class="card">
                     <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
-                        <h5 class="card-title">${response.data[ID].RestaurantName}</h5>
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
                         <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].Address}</div>
                         <div class="card-open"><i class="fas fa-clock fa-fw"></i>${response.data[ID].OpenTime}</div>
                     </div>
@@ -134,18 +141,20 @@ foodResponse("travel-food");
 function roomResponse(room) {
     let content = '';
     axios.get(
-        'https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?%24select=HotelID%2CHotelName%2CAddress%2CCity%2CClass%2CPicture&$filter=Picture%2FPictureUrl1%20ne%20null%20and%20City%20ne%20null&%24top=30&%24format=JSON',
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?$select=ID%2CName%2CCity%2CPicture%2CAddress%2CClass&$filter=Picture%2FPictureUrl1%20ne%20null%20and%20City%20ne%20null&$top=16&$format=JSON',
+
         {
             headers: getAuthorizationHeader()
         }
     ).then((response) => {
+        console.log(response.data)
         response.data.forEach(function (data, ID) {
             content +=
                 `<div class="col">
                 <div class="card">
                     <img src="${response.data[ID].Picture.PictureUrl1}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
-                        <h5 class="card-title">${response.data[ID].HotelName}</h5>
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
                         <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].City}</div>
                         <div class="card-sort">${response.data[ID].Class}</div>
                     </div>
@@ -154,7 +163,7 @@ function roomResponse(room) {
             `
 
         });
-        document.querySelector(`#${room}`).innerHTML = content + `<button id="room-more" v-on:click="moreBtn" class="travel-more">更多旅宿</button>`;
+        document.querySelector(`#${room}`).innerHTML = content + `<button id="room-more" class="travel-more">更多旅宿</button>`;
     })
         .catch((error) => console.log(error))
 }
@@ -167,7 +176,7 @@ function roomRender(description, res) {
                 <div class="card">
                     <img src="${response.data[ID].Picture.PictureUrl}" class="card-img-top" alt="${response.data[ID].Picture.PictureDescription1}">
                     <div class="card-body">
-                        <h5 class="card-title">${response.data[ID].HotelName}</h5>
+                        <h5 class="card-title">${response.data[ID].Name}</h5>
                         <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].City}</div>
                         <div class="card-sort">${response.data[ID].Class}</div>
                     </div>
@@ -182,12 +191,13 @@ roomResponse("travel-room");
 function activityResponse(activity) {
     let content = '';
     axios.get(
-        'https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?%24select=ActivityID%2CActivityName%2CAddress%2CStartTime%2CEndTime%2CPicture&$filter=Picture%2FPictureUrl1%20ne%20null&%24top=30&%24format=JSON',
-        
+        'https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity?$select=ID%2CName%2CAddress%2CStartTime%2CEndTime%2CPicture&$filter=Picture%2FPictureUrl1%20ne%20null&$top=16&$format=JSON',
+
         {
             headers: getAuthorizationHeader()
         }
     ).then((response) => {
+        console.log(response.data)
         response.data.forEach(function (data, ID) {
             content +=
                 `<div class="card mb-3">
@@ -197,7 +207,7 @@ function activityResponse(activity) {
               </div>
               <div class="col-lg-8">
                 <div class="card-body">
-                  <h5 class="card-title">${response.data[ID].ActivityName}</h5>
+                  <h5 class="card-title">${response.data[ID].Name}</h5>
                   <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].Address}</div>
                   <div class="card-start"> <i class="fas fa-calendar-week fa-fw"></i> ${response.data[ID].StartTime} ~ ${response.data[ID].StartTime}</div>
                 </div>
@@ -222,7 +232,7 @@ function activityRender(description, res) {
               </div>
               <div class="col-lg-8">
                 <div class="card-body">
-                  <h5 class="card-title">${response.data[ID].ActivityName}</h5>
+                  <h5 class="card-title">${response.data[ID].Name}</h5>
                   <div class="card-address"><i class="fas fa-map-marker-alt fa-fw"></i>${response.data[ID].Address}</div><br>
                   <div class="card-start"> <i class="fas fa-calendar-week fa-fw"></i> ${response.data[ID].StartTime} ~ ${response.data[ID].StartTime}</div>
                 </div>
@@ -236,10 +246,11 @@ function activityRender(description, res) {
 activityResponse("travel-activity");
 // this.options[this.selectedIndex].value;
 function moreBtn(){
-    $('.travel-more').click(function() {
-        $(this).parent('.travel').toggleClass('.original-height');
-    });
-    // $(this).parent('.travel').toggleClass('.original-height');
-    // $(this).parent(".travel").css('max-height','100%');
+    let parent = $(this).parent();
+    $(this).parent().addClass("original-height");
+    // let travelPage = thisBtn.id.parent();
+    console.log($(this).parent());
+    // let curBtn = this.getElementById;
+    // travelPage.style['max-height'] = "100%";
+    // thisBtn.style['display'] = 'none;'
 }
-moreBtn();
